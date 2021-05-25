@@ -1,5 +1,5 @@
-<img align="right" height="100" src="http://todepond.com/IMG/PlaneFlip.png">
+<img align="right" height="100" src="http://todepond.com/IMG/CleanTode.png">
 
-# MapPond
+# PondOfFame
 
-https://elegant-blackwell-2e202d.netlify.app/tinker/tinker.html
+famous frogis
