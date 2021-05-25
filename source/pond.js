@@ -2,6 +2,7 @@ const SAVE = (
 	"camera:x=-115.65736116448538,y=156.57780883837015,scale=0.476125533227265;entities:;id=0,source=Froggy.png,x=-807.7147518511856,y=340.0904218320787,z=0,scale=1,rotation=0;id=3,source=FroggyOrange.png,x=565.6095728247103,y=484.8046091147133,z=0,scale=1,rotation=0;id=4,source=Froggy.png,x=333.88309345828424,y=-38.424371001483145,z=0,scale=1,rotation=0;id=1,source=FroggyFlip.png,x=-455.0244001822548,y=-187.05332146640845,z=0,scale=1,rotation=0;id=2,source=FroggyFlip.png,x=-279.3474809820243,y=766.4984620204137,z=0,scale=1,rotation=0;id=5,source=Grass2.png,x=-958.3321215574862,y=-259.48788071494755,z=0,scale=0.6634204312890623,rotation=0;id=6,source=Grass2Flip.png,x=898.3387911644313,y=756.3843123719377,z=0,scale=0.7350918906249998,rotation=0;routes:"
 )
 
+
 const stage = Stage.make()
 const {canvas, context} = stage
 
@@ -104,12 +105,29 @@ const getImage = (source) => {
     return image
 }
 
+const titleStyle = HTML `<style>
+	#title {
+		position: absolute;
+		top: 0px;
+		color: rgb(224, 224, 224);
+		font-family: Rosario;
+		width: 100vw;
+		text-align: center;
+		font-size: 50px;
+		user-select: none;
+	}
+</style>`
+const title = HTML `<div id="title">Pond of Fame</div>`
+
 on.load(() => {
     document.body.appendChild(canvas)
     document.body.style["margin"] = "0"
     canvas.style["background-color"] = "rgb(23, 29, 40)"
     trigger("resize")
     load(SAVE)
+
+	document.head.appendChild(titleStyle)
+	document.body.appendChild(title)
     
 })
 
