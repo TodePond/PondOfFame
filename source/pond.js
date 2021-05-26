@@ -100,7 +100,7 @@ const getImage = (source) => {
     const cachedImage = imageCache.get(source)
     if (cachedImage !== undefined) return cachedImage
     const image = new Image()
-    image.src = `../images/${source}`
+    image.src = `images/${source}`
     imageCache.set(source, image)
     return image
 }
