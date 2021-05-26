@@ -1,5 +1,5 @@
 const SAVE = (
-	"camera:x=166.88327809316075,y=553.8627726852812,scale=0.6860357950487196;entities:;id=3,source=FroggyOrange.png,text=Flora Caulton,x=448.2331881239837,y=480.2612256766701,z=0,scale=1,rotation=0;id=2,source=FroggyFlip.png,text=Luke Wilson,x=-279.3474809820243,y=766.4984620204137,z=0,scale=1,rotation=0;id=6,source=Grass2Flip.png,text=undefined,x=898.3387911644313,y=756.3843123719377,z=0,scale=0.7350918906249998,rotation=0;id=1,source=Grass2.png,text=undefined,x=-584.6633701839364,y=237.23251931547156,z=0,scale=0.7314210254961913,rotation=0;routes:"
+	"camera:x=167,y=554,scale=0.6860;entities:;id=3,source=FroggyOrange.png,text=Flora Caulton,x=448,y=480,z=0,scale=1.0000,rotation=0.0000;id=2,source=FroggyFlip.png,text=Luke Wilson,x=-279,y=766,z=0,scale=1.0000,rotation=0.0000;id=6,source=Grass2Flip.png,text=undefined,x=898,y=756,z=0,scale=0.7351,rotation=0.0000;id=1,source=Grass2.png,text=undefined,x=-585,y=237,z=0,scale=0.7314,rotation=0.0000;routes:"
 )
 
 const urlParams = new URLSearchParams(window.location.search)
@@ -226,6 +226,16 @@ on.mousewheel((e) => {
 	updateHovers()
 	
 }, {passive: false})
+
+on.touchmove(e => {
+	if (e.touches.length === 1) {
+		//const [touch] = e.d.touches.d
+		//touch.d
+	}
+	/*const {movementX, movementY} = e
+	camera.x -= movementX / camera.scale
+	camera.y -= movementY / camera.scale*/
+})
 
 on.mousemove(e => {
 	updateHovers()
@@ -725,10 +735,10 @@ stage.draw = () => {
 // Save the map state to a string
 const save = () => {
     const lines = []
-    lines.push(`camera:x=${camera.x},y=${camera.y},scale=${camera.scale}`)
+    lines.push(`camera:x=${Math.round(camera.x)},y=${Math.round(camera.y)},scale=${camera.scale.toFixed(4)}`)
     lines.push(`entities:`)
     for (const entity of entities.values()) {
-        lines.push(`id=${entity.id},source=${entity.source},text=${entity.text},x=${entity.x},y=${entity.y},z=${entity.z},scale=${entity.scale},rotation=${entity.rotation}`)
+        lines.push(`id=${entity.id},source=${entity.source},text=${entity.text},x=${Math.round(entity.x)},y=${Math.round(entity.y)},z=${Math.round(entity.z)},scale=${entity.scale.toFixed(4)},rotation=${entity.rotation.toFixed(4)}`)
     }
 	lines.push(`routes:`)
     for (const route of routes.values()) {
