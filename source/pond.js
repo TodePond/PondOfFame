@@ -1,10 +1,14 @@
 const SAVE = (
-	"camera:x=-115.65736116448538,y=156.57780883837015,scale=0.476125533227265;entities:;id=0,source=Froggy.png,x=-807.7147518511856,y=340.0904218320787,z=0,scale=1,rotation=0;id=3,source=FroggyOrange.png,x=565.6095728247103,y=484.8046091147133,z=0,scale=1,rotation=0;id=4,source=Froggy.png,x=333.88309345828424,y=-38.424371001483145,z=0,scale=1,rotation=0;id=1,source=FroggyFlip.png,x=-455.0244001822548,y=-187.05332146640845,z=0,scale=1,rotation=0;id=2,source=FroggyFlip.png,x=-279.3474809820243,y=766.4984620204137,z=0,scale=1,rotation=0;id=5,source=Grass2.png,x=-958.3321215574862,y=-259.48788071494755,z=0,scale=0.6634204312890623,rotation=0;id=6,source=Grass2Flip.png,x=898.3387911644313,y=756.3843123719377,z=0,scale=0.7350918906249998,rotation=0;routes:"
+	"camera:x=166.88327809316075,y=553.8627726852812,scale=0.6860357950487196;entities:;id=3,source=FroggyOrange.png,text=Flora Caulton,x=448.2331881239837,y=480.2612256766701,z=0,scale=1,rotation=0;id=2,source=FroggyFlip.png,text=Luke Wilson,x=-279.3474809820243,y=766.4984620204137,z=0,scale=1,rotation=0;id=6,source=Grass2Flip.png,text=undefined,x=898.3387911644313,y=756.3843123719377,z=0,scale=0.7350918906249998,rotation=0;id=1,source=Grass2.png,text=undefined,x=-584.6633701839364,y=237.23251931547156,z=0,scale=0.7314210254961913,rotation=0;routes:"
 )
 
+const urlParams = new URLSearchParams(window.location.search)
+
+const EDIT_MODE = urlParams.has("edit")
 
 const stage = Stage.make()
 const {canvas, context} = stage
+
 
 const camera = {x: 0, y: 0, scale: 1}
 const entities = new Map()
@@ -88,9 +92,9 @@ const unregisterAllEntities = () => {
 }
 
 // Make an entity object
-const makeEntity = (source, {x = 0, y = 0, z = 0, scale = 1, rotation = 0} = {}) => {
+const makeEntity = (source, {x = 0, y = 0, z = 0, scale = 1, rotation = 0, text} = {}) => {
     const image = getImage(source)
-    const entity = {id: undefined, source, image, x, y, z, scale, rotation}
+    const entity = {id: undefined, source, image, x, y, z, scale, rotation, text}
     return entity
 }
 
@@ -115,9 +119,10 @@ const titleStyle = HTML `<style>
 		text-align: center;
 		font-size: 50px;
 		user-select: none;
+		text-decoration: underline;
 	}
 </style>`
-const title = HTML `<div id="title">Pond of Fame</div>`
+const title = HTML `<div id="title">POND OF FAME</div>`
 
 on.load(() => {
     document.body.appendChild(canvas)
@@ -253,6 +258,7 @@ on.mousemove(e => {
 })
 
 on.mousedown(e => {
+	if (!EDIT_MODE) return
 	if (e.button === 0) {
 		const [mx, my] = Mouse.position
 		selectionBoxStart[0] = mx
@@ -262,6 +268,7 @@ on.mousedown(e => {
 })
 
 on.mouseup(e => {
+	if (!EDIT_MODE) return
 	if (e.button === 0) {
 		const [mx, my] = Mouse.position
 		const [sx, sy] = selectionBoxStart
@@ -321,6 +328,7 @@ const findTopHit = (hits) => {
 }
 
 const updateHovers = () => {
+	if (!EDIT_MODE) return
 	const [mx, my] = Mouse.position
 	const [sx, sy] = selectionBoxStart
 	if (sx === undefined || sy === undefined) {
@@ -533,6 +541,8 @@ let prevPlaneRot = undefined
 stage.draw = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
+	context.textAlign = "center"
+
 	// Non-Plane Images
 	const zs = [...layers.keys()].sort((a, b) => a - b)
 	for (const z of zs) {
@@ -551,6 +561,12 @@ stage.draw = () => {
 			context.translate(cx, cy)
 			context.rotate(rotation)
 			context.drawImage(image, ox, oy, width, height)
+			if (entity.text !== "undefined") { //haha woops
+				
+				context.font = `${70 * entity.scale * camera.scale}px Rosario`
+				context.fillStyle = "rgb(224, 224, 224)"
+				context.fillText(entity.text, ox + width/2, oy + width * 0.95)
+			}
 			context.rotate(-rotation)
 			context.translate(-(cx), -(cy))
 		}
@@ -712,7 +728,7 @@ const save = () => {
     lines.push(`camera:x=${camera.x},y=${camera.y},scale=${camera.scale}`)
     lines.push(`entities:`)
     for (const entity of entities.values()) {
-        lines.push(`id=${entity.id},source=${entity.source},x=${entity.x},y=${entity.y},z=${entity.z},scale=${entity.scale},rotation=${entity.rotation}`)
+        lines.push(`id=${entity.id},source=${entity.source},text=${entity.text},x=${entity.x},y=${entity.y},z=${entity.z},scale=${entity.scale},rotation=${entity.rotation}`)
     }
 	lines.push(`routes:`)
     for (const route of routes.values()) {
@@ -733,9 +749,9 @@ const Load = MotherTode(`
 	)
 	Entities :: "entities:" { Entity }
 	Entity (
-		:: ";id=" Number ",source=" String ",x=" Number ",y=" Number ",z=" Number ",scale=" Number ",rotation=" Number
-		?? ([_1, id, _2, source, _3, x, _4, y, _5, z, _6, scale, _7, rotation]) => {
-			const entity = makeEntity(source.output, {x: x.output, y: y.output, z: z.output, scale: scale.output, rotation: rotation.output})
+		:: ";id=" Number ",source=" String ",text=" String ",x=" Number ",y=" Number ",z=" Number ",scale=" Number ",rotation=" Number
+		?? ([_1, id, _2, source, _a, text, _3, x, _4, y, _5, z, _6, scale, _7, rotation]) => {
+			const entity = makeEntity(source.output, {x: x.output, y: y.output, z: z.output, scale: scale.output, rotation: rotation.output, text: text.output})
 			loadEntity(entity, id.output)
 			return true
 		}
