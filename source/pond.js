@@ -1,5 +1,5 @@
 const SAVE = (
-	"camera:x=167,y=554,scale=0.6860;entities:;id=3,source=FroggyOrange.png,text=Flora Caulton,x=448,y=480,z=0,scale=1.0000,rotation=0.0000;id=2,source=FroggyFlip.png,text=Luke Wilson,x=-279,y=766,z=0,scale=1.0000,rotation=0.0000;id=6,source=Grass2Flip.png,text=undefined,x=898,y=756,z=0,scale=0.7351,rotation=0.0000;id=1,source=Grass2.png,text=undefined,x=-585,y=237,z=0,scale=0.7314,rotation=0.0000;routes:"
+	"camera:x=187,y=531,scale=0.7823;entities:;id=3,source=FroggyOrange.png,text=Flora Caulton,x=448,y=480,z=0,scale=1.0000,rotation=0.0000;id=2,source=FroggyFlip.png,text=Luke Wilson,x=-279,y=766,z=0,scale=1.0000,rotation=0.0000;id=6,source=Grass2Flip.png,text=undefined,x=898,y=756,z=0,scale=0.7351,rotation=0.0000;id=1,source=Grass2.png,text=undefined,x=-585,y=237,z=0,scale=0.7314,rotation=0.0000;routes:"
 )
 
 const urlParams = new URLSearchParams(window.location.search)
@@ -10,7 +10,7 @@ const stage = Stage.make()
 const {canvas, context} = stage
 
 
-const camera = {x: 0, y: 0, scale: 1}
+const camera = {x: 0, y: 0, scale: 1, scaleMod: 1}
 const entities = new Map()
 const freeEntityIds = new Set()
 const layers = new Map()
@@ -115,11 +115,13 @@ const titleStyle = HTML `<style>
 		top: 0px;
 		color: rgb(224, 224, 224);
 		font-family: Rosario;
-		width: 100vw;
+		left: 0px;
+		right: 0px;
 		text-align: center;
 		font-size: 50px;
 		user-select: none;
 		text-decoration: underline;
+		margin: 0;
 	}
 </style>`
 const title = HTML `<div id="title">POND OF FAME</div>`
@@ -128,8 +130,8 @@ on.load(() => {
     document.body.appendChild(canvas)
     document.body.style["margin"] = "0"
     canvas.style["background-color"] = "rgb(23, 29, 40)"
-    trigger("resize")
     load(SAVE)
+    trigger("resize")
 
 	document.head.appendChild(titleStyle)
 	document.body.appendChild(title)
@@ -139,6 +141,9 @@ on.load(() => {
 on.resize(() => {
     canvas.width = innerWidth
     canvas.height = innerHeight
+	if (innerWidth < (1920)) {
+		camera.scaleMod = innerWidth / 1920
+	}
 })
 
 let clipboard = []
@@ -231,18 +236,19 @@ on.touchmove(e => {
 	if (e.touches.length === 1) {
 		//const [touch] = e.d.touches.d
 		//touch.d
+		e.preventDefault()
 	}
 	/*const {movementX, movementY} = e
 	camera.x -= movementX / camera.scale
 	camera.y -= movementY / camera.scale*/
-})
+}, {passive: false})
 
 on.mousemove(e => {
 	updateHovers()
 	if (Mouse.Middle) {
 		const {movementX, movementY} = e
-		camera.x -= movementX / camera.scale
-		camera.y -= movementY / camera.scale
+		camera.x -= movementX / camera.scale * camera.scaleMod
+		camera.y -= movementY / camera.scale * camera.scaleMod
 	}
 	else if (Mouse.Right) {
 		const {movementX, movementY} = e
@@ -261,8 +267,8 @@ on.mousemove(e => {
 		}
 
 		for (const entity of selectedEntities.values()) {
-			entity.x += movementX / camera.scale
-			entity.y += movementY / camera.scale
+			entity.x += movementX / camera.scale * camera.scaleMod
+			entity.y += movementY / camera.scale * camera.scaleMod
 		}
 	}
 })
@@ -443,12 +449,12 @@ const toDegrees = (radians) => radians * 180 / Math.PI
 
 const makeSpace = ({scale = 1, x = 0, y = 0, width = 100, height = 100, rotation = 0}) => {
 
-	const w = scale * width * camera.scale
-	const h = scale * height * camera.scale
+	const w = scale * width * camera.scale * camera.scaleMod
+	const h = scale * height * camera.scale * camera.scaleMod
 	const dimensions = [w, h]
 
-	const px = canvas.width/2 + (x - camera.x - (width * scale)/2) * camera.scale
-	const py = canvas.height/2 + (y - camera.y - (height * scale)/2) * camera.scale
+	const px = canvas.width/2 + (x - camera.x - (width * scale)/2) * camera.scale * camera.scaleMod
+	const py = canvas.height/2 + (y - camera.y - (height * scale)/2) * camera.scale * camera.scaleMod
 	const position = [px, py]
 
 	const cx = px + w/2
@@ -573,7 +579,7 @@ stage.draw = () => {
 			context.drawImage(image, ox, oy, width, height)
 			if (entity.text !== "undefined") { //haha woops
 				
-				context.font = `${70 * entity.scale * camera.scale}px Rosario`
+				context.font = `${70 * entity.scale * camera.scale * camera.scaleMod}px Rosario`
 				context.fillStyle = "rgb(224, 224, 224)"
 				context.fillText(entity.text, ox + width/2, oy + width * 0.95)
 			}
@@ -583,8 +589,8 @@ stage.draw = () => {
 	}
 
 	// Routes
-	context.lineWidth = 26 * camera.scale
-	context.setLineDash([100 * camera.scale, 50 * camera.scale])
+	context.lineWidth = 26 * camera.scale * camera.scaleMod
+	context.setLineDash([100 * camera.scale * camera.scaleMod, 50 * camera.scale * camera.scaleMod])
 	context.strokeStyle = "rgba(224, 224, 224)"
 
 	let currentFrame = undefined
@@ -680,7 +686,7 @@ stage.draw = () => {
 	}
 
 	// Hovers
-	context.lineWidth = 5 * camera.scale
+	context.lineWidth = 5 * camera.scale * camera.scaleMod
 	context.setLineDash([])
 	for (const entity of entities.values()) {
         let {dimensions, rotation, center} = getEntitySpace(entity)
