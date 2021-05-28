@@ -139,10 +139,10 @@ on.load(() => {
 })
 
 on.resize(() => {
-    canvas.width = innerWidth * devicePixelRatio
-    canvas.height = innerHeight * devicePixelRatio
-	canvas.style.width = innerWidth
-	canvas.style.height = innerHeight
+    canvas.width = innerWidth
+    canvas.height = innerHeight
+	//canvas.style.width = innerWidth
+	//canvas.style.height = innerHeight
 	if (innerWidth < (1920)) {
 		camera.scaleMod = innerWidth / 1920
 	}
