@@ -212,26 +212,27 @@ const findFreeEntityIds = () => {
 	}
 }
 
-on.mousewheel((e) => {
+const onMouseWheel = e => {
 	e.preventDefault()
-    const {deltaY} = e
-
+    let {deltaY} = e
+	deltaY = deltaY / Math.abs(deltaY)
+	
 	if (e.altKey) {
 		for (const entity of selectedEntities) {
-			const zoom = (-deltaY / 100) * (entity.scale - entity.scale * (1 - 0.05))
+			const zoom = (-deltaY) * (entity.scale - entity.scale * (1 - 0.05))
 			entity.scale += zoom
 			if (entity.scale < 0) entity.scale = 0
 		}
 		updateHovers()
 		return
 	}
-
-	const zoom = (-deltaY) * (camera.scale - camera.scale * (1 - 0.0005))
+	const zoom = (-deltaY) * (camera.scale - camera.scale * (1 - 0.05))
     camera.scale += zoom
 	if (camera.scale < 0) camera.scale = 0
 	updateHovers()
-	
-}, {passive: false})
+}
+
+on.wheel(e => onMouseWheel(e), {passive: false})
 
 on.touchmove(e => {
 	e.preventDefault()
