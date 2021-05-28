@@ -236,15 +236,34 @@ on.mousewheel((e) => {
 }, {passive: false})
 
 on.touchmove(e => {
-	if (e.touches.length === 1) {
-		//const [touch] = e.d.touches.d
-		//touch.d
-		//e.preventDefault()
+	e.preventDefault()
+	if (touchCount = 1) {
+		const [x, y] = [e.touches[0].clientX, e.touches[0].clientY]
+		camera.x = touchCameraStart[0] + (touchOrigin[0] - x * devicePixelRatio) / (camera.scale * camera.scaleMod)
+		camera.y = touchCameraStart[1] + (touchOrigin[1] - y * devicePixelRatio) / (camera.scale * camera.scaleMod)
 	}
-	/*const {movementX, movementY} = e
-	camera.x -= movementX / camera.scale
-	camera.y -= movementY / camera.scale*/
 }, {passive: false})
+
+let touchCount = 0
+const touchOrigin = [0, 0]
+const touchCameraStart = [0, 0]
+on.touchstart(e => {
+	if (touchCount === 0) {
+		touchCount = 1
+		touchOrigin[0] = e.touches[0].clientX * devicePixelRatio
+		touchOrigin[1] = e.touches[0].clientY * devicePixelRatio
+		touchCameraStart[0] = camera.x
+		touchCameraStart[1] = camera.y
+	}
+})
+
+on.touchend(e => {
+	touchCount = e.touches.length
+})
+
+on.touchcancel(e => {
+	touchCount = e.touches.length
+})
 
 on.mousemove(e => {
 	updateHovers()
