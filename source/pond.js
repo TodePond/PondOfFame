@@ -302,7 +302,7 @@ on.touchcancel(e => {
 on.mousemove(e => {
 	e.preventDefault()
 	updateHovers()
-	if (Mouse.Middle) {
+	if (Mouse.Middle || (!EDIT_MODE && (Mouse.Left || Mouse.Right))) {
 		const {movementX, movementY} = e
 		camera.x -= movementX / (camera.scale * camera.scaleMod)
 		camera.y -= movementY / (camera.scale * camera.scaleMod)
