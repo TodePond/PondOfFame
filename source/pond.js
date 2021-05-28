@@ -115,8 +115,7 @@ const titleStyle = HTML `<style>
 		top: 0px;
 		color: rgb(224, 224, 224);
 		font-family: Rosario;
-		left: 0px;
-		right: 0px;
+		width: 100vw;
 		text-align: center;
 		font-size: 50px;
 		user-select: none;
@@ -126,9 +125,11 @@ const titleStyle = HTML `<style>
 </style>`
 const title = HTML `<div id="title">POND OF FAME</div>`
 
+const nomargin = HTML `<style>* {margin: 0px;}</style>`
 on.load(() => {
+	document.head.appendChild(nomargin)
     document.body.appendChild(canvas)
-    document.body.style["margin"] = "0"
+    document.body.style["margin"] = "0px"
     canvas.style["background-color"] = "rgb(23, 29, 40)"
     trigger("resize")
     load(SAVE)
@@ -139,12 +140,12 @@ on.load(() => {
 })
 
 on.resize(() => {
-    canvas.width = innerWidth
-    canvas.height = innerHeight
-	//canvas.style.width = innerWidth
-	//canvas.style.height = innerHeight
+    canvas.width = innerWidth * devicePixelRatio
+    canvas.height = innerHeight * devicePixelRatio
+	canvas.style.width = innerWidth
+	canvas.style.height = innerHeight
 	if (innerWidth < (1920)) {
-		camera.scaleMod = innerWidth / 1920
+		camera.scaleMod = (innerWidth / 1920) * devicePixelRatio
 	}
 })
 
@@ -238,7 +239,7 @@ on.touchmove(e => {
 	if (e.touches.length === 1) {
 		//const [touch] = e.d.touches.d
 		//touch.d
-		e.preventDefault()
+		//e.preventDefault()
 	}
 	/*const {movementX, movementY} = e
 	camera.x -= movementX / camera.scale
