@@ -130,8 +130,8 @@ on.load(() => {
     document.body.appendChild(canvas)
     document.body.style["margin"] = "0"
     canvas.style["background-color"] = "rgb(23, 29, 40)"
-    load(SAVE)
     trigger("resize")
+    load(SAVE)
 
 	document.head.appendChild(titleStyle)
 	document.body.appendChild(title)
@@ -139,8 +139,10 @@ on.load(() => {
 })
 
 on.resize(() => {
-    canvas.width = innerWidth
-    canvas.height = innerHeight
+    canvas.width = innerWidth * devicePixelRatio
+    canvas.height = innerHeight * devicePixelRatio
+	canvas.style.width = innerWidth
+	canvas.style.height = innerHeight
 	if (innerWidth < (1920)) {
 		camera.scaleMod = innerWidth / 1920
 	}
@@ -247,8 +249,8 @@ on.mousemove(e => {
 	updateHovers()
 	if (Mouse.Middle) {
 		const {movementX, movementY} = e
-		camera.x -= movementX / camera.scale * camera.scaleMod
-		camera.y -= movementY / camera.scale * camera.scaleMod
+		camera.x -= movementX / (camera.scale * camera.scaleMod)
+		camera.y -= movementY / (camera.scale * camera.scaleMod)
 	}
 	else if (Mouse.Right) {
 		const {movementX, movementY} = e
