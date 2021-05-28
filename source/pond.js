@@ -2,6 +2,10 @@ const SAVE = (
 	"camera:x=187,y=531,scale=0.7823;entities:;id=3,source=FroggyOrange.png,text=Flora Caulton,x=448,y=480,z=0,scale=1.0000,rotation=0.0000;id=2,source=FroggyFlip.png,text=Luke Wilson,x=-279,y=766,z=0,scale=1.0000,rotation=0.0000;id=6,source=Grass2Flip.png,text=undefined,x=898,y=756,z=0,scale=0.7351,rotation=0.0000;id=1,source=Grass2.png,text=undefined,x=-585,y=237,z=0,scale=0.7314,rotation=0.0000;routes:"
 )
 
+/*const SAVE = (
+	"camera:x=605,y=165,scale=0.6699;entities:;id=0,source=Colours/FroggyBlue.png,text=Water,x=1590,y=317,z=0,scale=1.0000,rotation=0.0000;id=1,source=Colours/FroggyCyan.png,text=Air,x=45,y=341,z=0,scale=1.0000,rotation=0.0000;id=2,source=Colours/FroggyGreen.png,text=Leaf,x=690,y=33,z=0,scale=1.0000,rotation=0.0000;id=3,source=Colours/FroggyLilac.png,text=Poison,x=868,y=733,z=0,scale=1.0000,rotation=0.0000;id=4,source=Colours/FroggyOrange.png,text=Wood,x=-320,y=-232,z=0,scale=1.0000,rotation=0.0000;id=5,source=Colours/FroggyPink.png,text=Flower,x=513,y=-552,z=0,scale=1.0000,rotation=0.0000;id=6,source=Colours/FroggyRed.png,text=Tode,x=-371,y=767,z=0,scale=1.0000,rotation=0.0000;id=7,source=Colours/FroggyYellow.png,text=Sand,x=1405,y=-419,z=0,scale=1.0000,rotation=0.0000;routes:"
+)*/
+
 const urlParams = new URLSearchParams(window.location.search)
 
 const EDIT_MODE = urlParams.has("edit")
@@ -320,8 +324,8 @@ on.mousemove(e => {
 		}
 
 		for (const entity of selectedEntities.values()) {
-			entity.x += movementX / camera.scale * camera.scaleMod
-			entity.y += movementY / camera.scale * camera.scaleMod
+			entity.x += movementX / camera.scale / camera.scaleMod
+			entity.y += movementY / camera.scale / camera.scaleMod
 		}
 	}
 }, {passive: false})
