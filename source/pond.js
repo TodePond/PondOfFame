@@ -226,10 +226,8 @@ on.mousewheel((e) => {
 		return
 	}
 
-	const zoom = (-deltaY / 100) * (camera.scale - camera.scale * (1 - 0.05))
+	const zoom = (-deltaY) * (camera.scale - camera.scale * (1 - 0.0005))
     camera.scale += zoom
-	camera.x += zoom
-	camera.y += zoom
 	if (camera.scale < 0) camera.scale = 0
 	updateHovers()
 	
@@ -247,7 +245,7 @@ on.touchmove(e => {
 		const [lx, ly] = [left.clientX, left.clientY]
 		const [rx, ry] = [right.clientX, right.clientY]
 		const pinch = Math.hypot(rx-lx, ry-ly)
-		camera.scale = pinchCameraStart * (pinch / pinchStart)
+		camera.scale = (pinch / pinchStart)
 	}
 }, {passive: false})
 
