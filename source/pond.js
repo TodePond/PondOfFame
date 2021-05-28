@@ -237,16 +237,27 @@ on.mousewheel((e) => {
 
 on.touchmove(e => {
 	e.preventDefault()
-	if (touchCount = 1) {
+	if (touchCount === 1) {
 		const [x, y] = [e.touches[0].clientX, e.touches[0].clientY]
 		camera.x = touchCameraStart[0] + (touchOrigin[0] - x * devicePixelRatio) / (camera.scale * camera.scaleMod)
 		camera.y = touchCameraStart[1] + (touchOrigin[1] - y * devicePixelRatio) / (camera.scale * camera.scaleMod)
+	}
+	else if (touchCount === 2) {
+		const [left, right] = e.touches
+		const [lx, ly] = [left.clientX, left.clientY]
+		const [rx, ry] = [right.clientX, right.clientY]
+		const pinch = Math.hypot(rx-lx, ry-ly)
+		camera.scale = pinchCameraStart * (pinch / pinchStart)
 	}
 }, {passive: false})
 
 let touchCount = 0
 const touchOrigin = [0, 0]
 const touchCameraStart = [0, 0]
+
+const pinchStart = 0
+const pinchCameraStart = 0
+
 on.touchstart(e => {
 	if (touchCount === 0) {
 		touchCount = 1
@@ -254,6 +265,14 @@ on.touchstart(e => {
 		touchOrigin[1] = e.touches[0].clientY * devicePixelRatio
 		touchCameraStart[0] = camera.x
 		touchCameraStart[1] = camera.y
+	}
+	else if (touchCount === 1) {
+		touchCount = 2
+		const [left, right] = e.touches
+		const [lx, ly] = [left.clientX, left.clientY]
+		const [rx, ry] = [right.clientX, right.clientY]
+		pinchStart = Math.hypot(rx-lx, ry-ly)
+		pinchCameraStart = camera.scale
 	}
 })
 
