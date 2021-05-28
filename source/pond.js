@@ -245,7 +245,7 @@ on.touchmove(e => {
 		const [lx, ly] = [left.clientX, left.clientY]
 		const [rx, ry] = [right.clientX, right.clientY]
 		const pinch = Math.hypot(rx-lx, ry-ly)
-		camera.scale = (pinch / pinchStart)
+		camera.scale = pinchCameraStart * (pinch / pinchStart)
 	}
 }, {passive: false})
 
@@ -253,8 +253,8 @@ let touchCount = 0
 const touchOrigin = [0, 0]
 const touchCameraStart = [0, 0]
 
-const pinchStart = 0
-const pinchCameraStart = 0
+let pinchStart = 0
+let pinchCameraStart = 0
 
 on.touchstart(e => {
 	if (touchCount === 0) {
@@ -276,10 +276,22 @@ on.touchstart(e => {
 
 on.touchend(e => {
 	touchCount = e.touches.length
+	if (touchCount === 1) {
+		touchOrigin[0] = e.touches[0].clientX * devicePixelRatio
+		touchOrigin[1] = e.touches[0].clientY * devicePixelRatio
+		touchCameraStart[0] = camera.x
+		touchCameraStart[1] = camera.y
+	}
 })
 
 on.touchcancel(e => {
 	touchCount = e.touches.length
+	if (touchCount === 1) {
+		touchOrigin[0] = e.touches[0].clientX * devicePixelRatio
+		touchOrigin[1] = e.touches[0].clientY * devicePixelRatio
+		touchCameraStart[0] = camera.x
+		touchCameraStart[1] = camera.y
+	}
 })
 
 on.mousemove(e => {
