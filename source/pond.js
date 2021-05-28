@@ -295,6 +295,7 @@ on.touchcancel(e => {
 })
 
 on.mousemove(e => {
+	e.preventDefault()
 	updateHovers()
 	if (Mouse.Middle) {
 		const {movementX, movementY} = e
@@ -322,9 +323,10 @@ on.mousemove(e => {
 			entity.y += movementY / camera.scale * camera.scaleMod
 		}
 	}
-})
+}, {passive: false})
 
 on.mousedown(e => {
+	e.preventDefault()
 	if (!EDIT_MODE) return
 	if (e.button === 0) {
 		const [mx, my] = Mouse.position
@@ -332,7 +334,7 @@ on.mousedown(e => {
 		selectionBoxStart[1] = my
 		
 	}
-})
+}, {passive: false})
 
 on.mouseup(e => {
 	if (!EDIT_MODE) return
