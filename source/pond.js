@@ -1,5 +1,5 @@
 let SAVE = (
-	"camera:x=143,y=800,scale=0.5736;entities:;id=6,source=Grass2Flip.png,text=undefined,x=988,y=834,z=0,scale=0.7351,rotation=0.0000;id=1,source=Grass2.png,text=undefined,x=-572,y=507,z=0,scale=0.7314,rotation=0.0000;id=0,source=Colours/FroggyYellow.png,text=Sebastian Andreasson,x=394,y=1135,z=0,scale=1.0000,rotation=0.0000;id=4,source=Grass2.png,text=undefined,x=-280,y=1419,z=0,scale=0.7314,rotation=0.0000;id=2,source=Colours/FroggyOrange.png,text=Flora Caulton,x=590,y=557,z=0,scale=1.0000,rotation=0.0000;id=3,source=Colours/FroggyRedFlip.png,text=Luke Wilson,x=-177,y=835,z=0,scale=1.0000,rotation=0.0000;id=5,source=Colours/FroggyCyanFlip.png,text=@walpolea,x=-3,y=267,z=0,scale=1.0000,rotation=0.0000;routes:"
+	"camera:x=149,y=797,scale=0.5164;entities:;id=6,source=Grass2Flip.png,text=undefined,x=947,y=813,z=0,scale=0.7351,rotation=0.0000;id=1,source=Grass2.png,text=undefined,x=-575,y=500,z=0,scale=0.7314,rotation=0.0000;id=0,source=Colours/FroggyYellow.png,text=Sebastian Andreasson,x=348,y=1128,z=0,scale=1.0000,rotation=0.0000;id=4,source=Grass2.png,text=undefined,x=-327,y=1354,z=0,scale=0.7314,rotation=0.0000;id=2,source=Colours/FroggyOrange.png,text=Flora Caulton,x=544,y=550,z=0,scale=1.0000,rotation=0.0000;id=3,source=Colours/FroggyRedFlip.png,text=Luke Wilson,x=-223,y=828,z=0,scale=1.0000,rotation=0.0000;id=5,source=Colours/FroggyCyanFlip.png,text=@walpolea,x=-49,y=260,z=0,scale=1.0000,rotation=0.0000;routes:"
 )
 
 /*SAVE = (
@@ -149,7 +149,11 @@ on.resize(() => {
 	canvas.style.width = innerWidth
 	canvas.style.height = innerHeight
 	if (innerWidth < (1920)) {
-		camera.scaleMod = (innerWidth / 1920) * devicePixelRatio
+		camera.scaleMod = (innerWidth / 1080) * devicePixelRatio
+		//camera.scaleMod = devicePixelRatio
+	}
+	else {
+		camera.scaleMod = devicePixelRatio
 	}
 })
 
