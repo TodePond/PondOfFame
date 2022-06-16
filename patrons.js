@@ -38,6 +38,6 @@ const froggyHeroes = [
 	makePatron({name: "Raphaël de Courville"}),
 	makePatron({name: "Craig Fouts"}),
 	makePatron({name: "Terence"}),
-	makePatron({name: "Sage Friorentino-Lange"}),
+	makePatron({name: "Sage Fiorentino-Lange"}),
 	makePatron({name: "CoderCandy"}),
 ]
