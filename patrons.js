@@ -52,5 +52,5 @@ const froggyHeroes = [
 	makePatron({name: "Kyle"}),
 	makePatron({name: "Steve Ruiz", element: "Wood"}),
 	makePatron({name: "MG"}),
-	//makePatron({name: "migujorg"}),
+	makePatron({name: "migujorg"}),
 ]
