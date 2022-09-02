@@ -55,5 +55,5 @@ const froggyHeroes = [
 	makePatron({name: "migujorg"}),
 	//makePatron({name: "Jimmy Miller"}),
 	makePatron({name: "Vanawy", element: "Flower"}),
-	//makePatron({name: "gay spider"}),
+	makePatron({name: "gay spider", element: "Flower"}),
 ]
