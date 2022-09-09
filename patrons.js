@@ -52,7 +52,7 @@ const froggyHeroes = [
 	makePatron({name: "Kyle"}),
 	makePatron({name: "Steve Ruiz", element: "Wood"}),
 	makePatron({name: "MG"}),
-	makePatron({name: "migujorg"}),
+	makePatron({name: "migujorg", element: "Poison"}),
 	//makePatron({name: "Jimmy Miller"}),
 	makePatron({name: "Vanawy", element: "Flower"}),
 	makePatron({name: "gay spider", element: "Flower"}),
@@ -61,4 +61,5 @@ const froggyHeroes = [
 	//makePatron({name: "Booyah"}),
 	//makePatron({name: "jeremy"}),
 	//makePatron({name: "Luke"}),
+	//makePatron({name: "Don't Be TREE"}),
 ]
