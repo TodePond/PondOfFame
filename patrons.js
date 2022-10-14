@@ -11,7 +11,7 @@ const froggyHeroes = [
 	makePatron({name: "Gill W", element: "Flower"}),
 	makePatron({name: "Latchy", element: "Wood"}),
 	makePatron({name: "Florent Loock", element: "Fire"}),
-	makePatron({name: "George McGhee", element: "Fire"}),
+	makePatron({name: "George McGhee", element: "Sand"}),
 	makePatron({name: "Dimitar Irinkov", element: "Fire"}),
 	makePatron({name: "@poorsquid", element: "Leaf"}),
 	makePatron({name: "The Saddest Biccy - A Pitiful Digestive", element: "Leaf"}),
@@ -65,4 +65,9 @@ const froggyHeroes = [
 	makePatron({name: "OmniToad", element: "Air"}),
 	makePatron({name: "Don't Be TREE"}),
 	makePatron({name: "Patrick Taynor", element: "Poison"}),
+	makePatron({name: "Márton Klecska"}),
+	makePatron({name: "Andrew Walker"}),
+	makePatron({name: "Max Goodhart"}),
+	//makePatron({name: "Titouan"}),
+	//makePatron({name: "Max", element: "Fire"}),
 ]
