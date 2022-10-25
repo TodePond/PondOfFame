@@ -68,6 +68,7 @@ const froggyHeroes = [
 	makePatron({name: "Márton Klecska"}),
 	makePatron({name: "Andrew Walker"}),
 	makePatron({name: "Max Goodhart"}),
-	//makePatron({name: "Titouan"}),
-	//makePatron({name: "Max", element: "Fire"}),
+	makePatron({name: "Titouan"}),
+	makePatron({name: "Max", element: "Fire"}),
+	makePatron({name: "Jack Wild"}),
 ]
