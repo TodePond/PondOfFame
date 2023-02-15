@@ -99,6 +99,13 @@ const froggyHeroes = [
 
 const flappyHeroes = [
 	makePatron({name: "Berd", element: "Fire", tier: "Flappy"}),
+	makePatron({name: "Burd", element: "Water", tier: "Flappy"}),
+	makePatron({name: "Bird", element: "Leaf", tier: "Flappy"}),
+	makePatron({name: "Bard", element: "Wood", tier: "Flappy"}),
+	makePatron({name: "Bord", element: "Metal", tier: "Flappy"}),
+	makePatron({name: "Birb", element: "Air", tier: "Flappy"}),
+	makePatron({name: "Bid", element: "Sand", tier: "Flappy"}),
+	makePatron({name: "Berrd", element: "Poison", tier: "Flappy"}),
 ]
 
 const checkAllPatronsAreThere = () => {
@@ -113,5 +120,46 @@ const checkAllPatronsAreThere = () => {
 }
 
 const COLOUR_MAP = {
-	
+	"Fire": "Red",
+	"Water": "Blue",
+	"Air": "Cyan",
+	"Sand": "Yellow",
+	"Wood": "Orange",
+	"Flower": "Pink",
+	"Pink Sand": "Pink2",
+	"Metal": "Silver",
+	"Poison": "Purple",
+	"Leaf": "Green",
+	"Void": "Void",
+	"Cloud": "White",
 }
+
+const createTree = (patrons) => {
+	if (patrons.length === 0) return
+	const bottom = createEntity("bottom.png", {x: 6000, ignoreSave: true})
+	const patron0 = patrons[0]
+	const berd0 = createEntity(`Colours/Flappy/${COLOUR_MAP[patron0.element]}.png`, {
+		x: 5675,
+		ignoreSave: true,
+		y: 235,
+		scale: 0.75,
+		text: patron0.name,
+	})
+	for (let i = 1; i < patrons.length; i++) {
+		const middle = createEntity("middle.png", {x: 6000 - (i-1) * 24, ignoreSave: true, y: -(i-1) * 656})
+		const patron = patrons[i]
+		const berd = createEntity(`Colours/Flappy/${COLOUR_MAP[patron.element]}.png`, {
+			x: 5675 - (i) * 24,
+			ignoreSave: true,
+			y: 240 - (i) * 656,
+			scale: 0.75,
+			text: patron.name,
+		})
+	}
+	const top = createEntity("top.png", {x: 6000 - (patrons.length-2) * 24, ignoreSave: true, y: -(patrons.length-2) * 656})
+
+}
+
+on.load(() => {
+	createTree(flappyHeroes)
+})
