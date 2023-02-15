@@ -1,5 +1,5 @@
-const makePatron = ({name, tier = "Froggy Hero", element = "Fire"}) => {
-	const patron = {name, tier, element}
+const makePatron = ({name, tier = "Froggy", element = "Fire", username = name}) => {
+	const patron = {name, tier, element, username}
 	return patron
 }
 
@@ -97,6 +97,10 @@ const froggyHeroes = [
 	makePatron({name: "Joshix"})
 ]
 
+const flappyHeroes = [
+	makePatron({name: "Berd", element: "Fire", tier: "Flappy"}),
+]
+
 const checkAllPatronsAreThere = () => {
 	for (const froggyHero of froggyHeroes) {
 		const { name } = froggyHero
@@ -106,4 +110,8 @@ const checkAllPatronsAreThere = () => {
 			console.error("Missing", name)
 		}
 	}
+}
+
+const COLOUR_MAP = {
+	
 }
