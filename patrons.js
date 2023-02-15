@@ -75,7 +75,7 @@ const froggyHeroes = [
 	makePatron({name: "Pellerin Léonard"}),
 	makePatron({name: "Bruno Dantas", element: "Leaf"}),
 	makePatron({name: "Oliver", element: "Water"}),
-	makePatron({name: "Ringlings System", element: "Flower"}),
+	//makePatron({name: "Ringlings System", element: "Flower"}),
 	makePatron({name: "Anna Chamberlain", element: "Fire"}),
 	makePatron({name: "Sawyer McLane", element: "Fire"}),
 	makePatron({name: "Peter Brodersen", element: "Leaf"}),
@@ -96,3 +96,14 @@ const froggyHeroes = [
 	makePatron({name: "Russel Simmons"}),
 	makePatron({name: "Joshix"})
 ]
+
+const checkAllPatronsAreThere = () => {
+	for (const froggyHero of froggyHeroes) {
+		const { name } = froggyHero
+		if (SAVE.includes(name)) {
+			console.log("Found", name)
+		} else {
+			console.error("Missing", name)
+		}
+	}
+}
