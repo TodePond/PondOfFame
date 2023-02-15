@@ -82,7 +82,7 @@ const froggyHeroes = [
 	makePatron({name: "Surma"}),
 	makePatron({name: "dan-lee", element: "Fire"}),
 	makePatron({name: "João Guilherme Madeira Araújo", element: "Fire"}),
-	makePatron({name: "MarcoPPino", element: "Fire"}),
+	makePatron({name: "Wilsown", element: "Fire", username: "MarcoPPino"}),
 	makePatron({name: "Angelo Ashmore"}),
 	makePatron({name: "Alec Resnick"}),
 	makePatron({name: "Eliko"}),
@@ -94,4 +94,5 @@ const froggyHeroes = [
 	makePatron({name: "Kybe"}),
 	makePatron({name: "Robb Beal"}),
 	makePatron({name: "Russel Simmons"}),
+	makePatron({name: "Joshix"})
 ]
