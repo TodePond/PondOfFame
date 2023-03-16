@@ -33,7 +33,6 @@ const froggyHeroes = [
   makePatron({ name: "Hayden Jackson", element: "Fire" }),
   makePatron({ name: "Brian Zindler", element: "Fire" }),
   makePatron({ name: "antovsky", element: "Sand" }),
-  makePatron({ name: "Benjamin Mastripolito", element: "Sand" }),
   makePatron({ name: "Patrick Kennedy", element: "Flower" }),
   makePatron({ name: "Ax2u", element: "Poison" }),
   makePatron({ name: "Filip Optołowicz" }),
@@ -87,7 +86,6 @@ const froggyHeroes = [
   makePatron({ name: "Pellerin Léonard" }),
   makePatron({ name: "Bruno Dantas", element: "Leaf" }),
   makePatron({ name: "Oliver", element: "Water" }),
-  //makePatron({name: "Ringlings System", element: "Flower"}),
   makePatron({ name: "Anna Chamberlain", element: "Fire" }),
   makePatron({ name: "Sawyer McLane", element: "Fire" }),
   makePatron({ name: "Peter Brodersen", element: "Leaf" }),
@@ -107,6 +105,17 @@ const froggyHeroes = [
   makePatron({ name: "Robb Beal" }),
   makePatron({ name: "Russel Simmons" }),
   makePatron({ name: "Joshix" }),
+  //makePatron({name: "Ell"}),
+  //makePatron({name: "parameterized"}),
+  //makePatron({name: "SNDTST"}),
+  //makePatron({name: "SomehowSane", element: "Sand"}),
+  //makePatron({name: "Das Gürteltier"}),
+  //makePatron({name: "Murch"}),
+  //makePatron({name: "transistor fet"}),
+  //makePatron({name: "Books"}),
+  //makePatron({name: "forresto"}),
+  //makePatron({name: "k_lemon"}),
+  //makePatron({name: "Nona"}),
 ];
 
 const flappyHeroes = [
