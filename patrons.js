@@ -139,6 +139,18 @@ const checkAllPatronsAreThere = () => {
       console.error("Missing", name);
     }
   }
+
+  for (const [, entity] of entities) {
+    if (
+      entity.text === "" ||
+      entity.text === undefined ||
+      entity.text === "undefined"
+    )
+      continue;
+    if (froggyHeroes.find((f) => f.name === entity.text)) continue;
+    if (flappyHeroes.find((f) => f.name === entity.text)) continue;
+    console.error("Extra", entity.text);
+  }
 };
 
 const COLOUR_MAP = {
