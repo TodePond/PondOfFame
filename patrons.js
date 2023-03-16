@@ -33,6 +33,7 @@ const froggyHeroes = [
   makePatron({ name: "Hayden Jackson", element: "Fire" }),
   makePatron({ name: "Brian Zindler", element: "Fire" }),
   makePatron({ name: "antovsky", element: "Sand" }),
+  makePatron({ name: "Benjamin Mastripolito", element: "Sand" }),
   makePatron({ name: "Patrick Kennedy", element: "Flower" }),
   makePatron({ name: "Ax2u", element: "Poison" }),
   makePatron({ name: "Filip Optołowicz" }),
