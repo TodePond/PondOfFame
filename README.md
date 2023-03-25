@@ -1,4 +1,4 @@
-<img align="right" height="100" src="http://todepond.com/IMG/CleanTode.png">
+<img align="right" height="100" src="http://img.todepond.com/IMG/CleanTode.png">
 
 # PondOfFame
 
