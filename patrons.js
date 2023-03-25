@@ -13,7 +13,7 @@ const froggyHeroes = [
   makePatron({ name: "Sebastian Andreasson", element: "Sand" }),
   makePatron({ name: "Max Bittker", element: "Fire" }),
   makePatron({ name: "@walpolea", element: "Air" }),
-  makePatron({ name: "Gill W", element: "Flower" }),
+  makePatron({ name: "Gill W", element: "Sky" }),
   makePatron({ name: "Latchy", element: "Wood" }),
   makePatron({ name: "Florent Loock", element: "Fire" }),
   makePatron({ name: "George McGhee", element: "Sand" }),
@@ -34,7 +34,7 @@ const froggyHeroes = [
   makePatron({ name: "Brian Zindler", element: "Fire" }),
   makePatron({ name: "antovsky", element: "Sand" }),
   makePatron({ name: "Benjamin Mastripolito", element: "Sand" }),
-  makePatron({ name: "Patrick Kennedy", element: "Flower" }),
+  makePatron({ name: "Patrick Kennedy", element: "Cloud" }),
   makePatron({ name: "Ax2u", element: "Poison" }),
   makePatron({ name: "Filip Optołowicz" }),
   makePatron({ name: "Matt Giallourakis" }),
@@ -106,8 +106,8 @@ const froggyHeroes = [
   makePatron({ name: "Robb Beal" }),
   makePatron({ name: "Russel Simmons" }),
   makePatron({ name: "Joshix", element: "Pink Sand" }),
-  //makePatron({name: "Ell"}),
-  //makePatron({name: "parameterized"}),
+  makePatron({ name: "Ell" }),
+  //makePatron({name: "parameterized", element: "Poison"}),
   //makePatron({name: "SNDTST"}),
   //makePatron({name: "SomehowSane", element: "Sand"}),
   //makePatron({name: "Das Gürteltier"}),
@@ -115,19 +115,13 @@ const froggyHeroes = [
   //makePatron({name: "transistor fet"}),
   //makePatron({name: "Books"}),
   //makePatron({name: "forresto"}),
-  //makePatron({name: "k_lemon"}),
+  //makePatron({name: "k"}),
   //makePatron({name: "Nona"}),
 ];
 
 const flappyHeroes = [
-  // makePatron({name: "Berd", element: "Fire", tier: "Flappy"}),
-  // makePatron({name: "Burd", element: "Water", tier: "Flappy"}),
-  // makePatron({name: "Bird", element: "Leaf", tier: "Flappy"}),
-  // makePatron({name: "Bard", element: "Wood", tier: "Flappy"}),
-  // makePatron({name: "Bord", element: "Metal", tier: "Flappy"}),
-  // makePatron({name: "Birb", element: "Air", tier: "Flappy"}),
-  // makePatron({name: "Bid", element: "Sand", tier: "Flappy"}),
-  // makePatron({name: "Berrd", element: "Poison", tier: "Flappy"}),
+  makePatron({ name: "Blendi Goose", element: "Air", tier: "Flappy" }),
+  makePatron({ name: "Hunter Irving", element: "Cloud", tier: "Flappy" }),
 ];
 
 const checkAllPatronsAreThere = () => {
