@@ -105,7 +105,7 @@ const froggyHeroes = [
   makePatron({ name: "Kybe" }),
   makePatron({ name: "Robb Beal" }),
   makePatron({ name: "Russel Simmons" }),
-  makePatron({ name: "Joshix" }),
+  makePatron({ name: "Joshix", element: "Pink Sand" }),
   makePatron({ name: "Ell" }),
   //makePatron({name: "parameterized", element: "Poison"}),
   //makePatron({name: "SNDTST"}),
