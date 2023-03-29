@@ -49,7 +49,7 @@ const froggyHeroes = [
   makePatron({ name: "Raphaël de Courville", element: "Sand" }),
   makePatron({ name: "Craig Fouts" }),
   makePatron({ name: "Taos" }),
-  makePatron({ name: "Sage Fiorentino-Lange" }),
+  makePatron({ name: "Sage Fiorentino-Lange", element: "Leaf" }),
   makePatron({ name: "SimplyLinn", element: "Poison", special: "#926aa4" }),
   makePatron({ name: "Fuzzyzilla", element: "Leaf" }),
   makePatron({ name: "disconcision", element: "Poison" }),
