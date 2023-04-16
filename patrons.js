@@ -116,6 +116,7 @@ const froggyHeroes = [
   makePatron({ name: "forresto" }),
   makePatron({ name: "k", element: "Metal" }),
   makePatron({ name: "Nona" }),
+  makePatron({ name: "Laure B", element: "Air" }),
 ];
 
 const flappyHeroes = [
@@ -202,4 +203,5 @@ const createTree = (patrons) => {
 
 on.load(() => {
   createTree(flappyHeroes);
+  checkAllPatronsAreThere();
 });
