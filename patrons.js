@@ -113,16 +113,21 @@ const froggyHeroes = [
   makePatron({ name: "Murch" }),
   makePatron({ name: "transistor fet", element: "Cloud" }),
   makePatron({ name: "Books", element: "Poison" }),
-  makePatron({ name: "forresto" }),
+  makePatron({ name: "forresto", element: "Leaf" }),
   makePatron({ name: "k", element: "Metal" }),
   makePatron({ name: "Nona" }),
   makePatron({ name: "Laure B", element: "Air" }),
 ];
 
 const flappyHeroes = [
-  makePatron({ name: "Blendi Goose", element: "Air", tier: "Flappy" }),
-  makePatron({ name: "Hunter Irving", element: "Cloud", tier: "Flappy" }),
+  makePatron({ name: "Blendi Goose", element: "Air" }),
+  makePatron({ name: "Hunter Irving", element: "Cloud" }),
+  makePatron({ name: "rjt", element: "Pink Sand" }),
 ];
+
+for (const [, v] of flappyHeroes) {
+  v.tier = "Flappy";
+}
 
 const checkAllPatronsAreThere = () => {
   for (const froggyHero of froggyHeroes) {
