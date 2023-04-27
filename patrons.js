@@ -70,7 +70,6 @@ const froggyHeroes = [
   makePatron({ name: "Tanz", element: "Poison" }),
   makePatron({ name: "Booyah", element: "Fire" }),
   makePatron({ name: "Julia V", element: "Poison" }),
-  makePatron({ name: "Jerbaloot", element: "Sand" }),
   makePatron({ name: "OmniToad", element: "Air" }),
   makePatron({ name: "Don't Be TREE" }),
   makePatron({ name: "Patrick Taynor", element: "Poison" }),
@@ -123,6 +122,7 @@ const flappyHeroes = [
   makePatron({ name: "Blendi Goose", element: "Air" }),
   makePatron({ name: "Hunter Irving", element: "Cloud" }),
   makePatron({ name: "rjt", element: "Pink Sand" }),
+  makePatron({ name: "Jerbaloot", element: "Sand" }),
 ];
 
 for (const [, v] of flappyHeroes) {
