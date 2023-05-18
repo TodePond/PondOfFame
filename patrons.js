@@ -123,6 +123,7 @@ const flappyHeroes = [
   makePatron({ name: "Hunter Irving", element: "Cloud" }),
   makePatron({ name: "rjt", element: "Pink Sand" }),
   makePatron({ name: "Jerbaloot", element: "Sand" }),
+  makePatron({ name: "Diego F. Goberna:", element: "Pink Sand" }),
 ];
 
 for (const [, v] of flappyHeroes) {
