@@ -133,6 +133,12 @@ const flappyHeroes = [
   makePatron({ name: "an guy", element: "Cloud" }),
   makePatron({ name: "Julian de Convenent", element: "Cloud" }),
   makePatron({ name: "Peter Wright", element: "Leaf" }),
+  makePatron({ name: "xavie", element: "Metal" }),
+  makePatron({ name: "Havu", element: "Water" }),
+  makePatron({ name: "Matic Gostiša", element: "Wood" }),
+  makePatron({ name: "Haploid", element: "Fire" }),
+  makePatron({ name: "netux", element: "Wood" }),
+  makePatron({ name: "Jmal116", element: "Fire" }),
 ];
 
 for (const [, v] of flappyHeroes) {
