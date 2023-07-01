@@ -240,6 +240,9 @@ const findFreeEntityIds = () => {
 const onMouseWheel = (e) => {
   e.preventDefault();
   let { deltaY } = e;
+  if (!deltaY) {
+    return;
+  }
   deltaY = deltaY / Math.abs(deltaY);
 
   if (e.altKey) {
